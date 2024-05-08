@@ -1,0 +1,60 @@
+replicaCount: 1
+
+image:
+  repository: yandex/clickhouse-server
+  tag: latest
+  pullPolicy: IfNotPresent
+
+nodeSelector:
+  kubernetes.io/hostname: ip-10-1-1-107.us-west-2.compute.internal
+
+service:
+  name: clickhouse
+  ports:
+    - name: clickhouse
+      port: 9000
+      targetPort: 9000
+    - name: http
+      port: 8123
+      targetPort: 8123
+
+persistentVolumeClaim:
+  name: clickhouse-data
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+configMap:
+  name: clickhouse-config
+  data:
+    clickhouse.xml: |
+      <yandex>
+        <!-- Hot storage -->
+        <disks>
+          <disk>
+            <path>/var/lib/clickhouse/hot</path>
+            <type>hdd</type>
+            <disk_space>5G</disk_space>
+          </disk>
+        </disks>
+        <!-- Cold storage -->
+        <disks>
+          <disk>
+            <path>/var/lib/clickhouse/cold</path>
+            <type>hdd</type>
+            <disk_space>10G</disk_space>
+          </disk>
+        </disks>
+        <!-- Move factor -->
+        <background_move_to_detached>
+          <max_bytes_to_move>20G</max_bytes_to_move>
+          <move_factor>0.2</move_factor>
+        </background_move_to_detached>
+    config.xml: |
+      file_permissions:
+        owner: '101'
+        owner_group: '101'
+        mode: '0644'
+

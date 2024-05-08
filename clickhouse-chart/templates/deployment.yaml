@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.service.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: clickhouse
+  template:
+    metadata:
+      labels:
+        app: clickhouse
+    spec:
+      containers:
+      - name: clickhouse
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 9000
+        - containerPort: 8123
+        volumeMounts:
+        - name: clickhouse-data
+          mountPath: /var/lib/clickhouse
+      volumes:
+      - name: clickhouse-data
+        persistentVolumeClaim:
+          claimName: {{ .Values.persistentVolumeClaim.name }}
+          # - name: clickhouse-config
+          #configMap:
+          #name: {{ .Values.configMap.name }}
+
