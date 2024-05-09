@@ -1,0 +1,62 @@
+PS C:\Users\Admin\Desktop\Helmchart_Clickhouse\clickhouse-chart> history 
+
+  Id CommandLine
+  -- -----------
+   1 try { . "c:\Users\Admin\AppData\Local\Programs\Microsoft VS Code\resources\app\out\vs\workbench\contrib\term...
+   2 helm
+   3 clear
+   4 helm
+   5 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   6 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+   7 clear
+   8 clear
+   9 scoop install helm
+  10 helm
+  11 \clear
+  12 clear
+  13 ls
+  14 cd .\clickhouse-chart\
+  15 clear
+  16 ls
+  17 kubetcl get po
+  18 kubectl get po
+  19 kubectl get po -A
+  20 clear
+  21 helm install clickhouse .
+  22 helm uninstall clickhouse .
+  23 helm uninstall clickhouse --debug .
+  24 helm uninstall clickhouse .
+  25 helm install clickhouse --debug .
+  26 clear
+  27 k get po
+  28 kubectl get po
+  29 kubectl get po
+  30 kubectl get po
+  31 kubectl get po
+  32 kubectl get po
+  33 kubectl get po
+  34 k9s
+  35 scoop install k9s
+  36 k9s
+  37 helm uninstall clickhouse .
+  38 minikube delete
+  39 minikube start --feature Gates=VolumeHostPath
+  40 minikube start --feature Gates=VolumeHostPath
+  41 minikube start
+  42 clear
+  43 df -h
+  44 minikube -h
+  45 kubectl get po
+  46 k apply -f ..\pv.yaml
+  47 kubectl apply -f ..\pv.yaml
+  48 k9s
+  49 helm install clickhouse --debug .
+  50 k9s
+  51 scoop install dbeaver
+  52 scoop install clickhouse-client
+  53 scoop install clickhouseclient
+  54 scoop install clickhouse
+  55 clear
+  56 scoop install dbeaver
+  57 clear
+  58 k9s
