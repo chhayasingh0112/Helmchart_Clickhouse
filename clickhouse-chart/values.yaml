@@ -24,7 +24,7 @@ persistentVolumeClaim:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 20Gi
+      storage: 2Gi
 
 configMap:
   name: clickhouse-config
